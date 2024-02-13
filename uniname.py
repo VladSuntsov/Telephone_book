@@ -1,7 +1,7 @@
 import os
 
 
-class Telephone_Book:
+class TelephoneBook:
     def __init__(self,
                  second_name: str,
                  first_name: str,
@@ -25,7 +25,11 @@ class Telephone_Book:
     def create_note(self):
         second_name = input("Введите фамилию: ")
         first_name = input("Введите имя: ")
-        return build_note(second_name, first_name)
+        sur_name = input('Введите отчество: ')
+        organization = input('Введите название организации: ')
+        telephone_work = input('Введите номер телефона личный: ')
+        telephone_you = input('Введите номер рабочий: ')
+        return self.build_note()
 
     def read_note(self):
         second_name = input("Введите фамилию: ")
@@ -55,7 +59,11 @@ class Telephone_Book:
         else:
             print('Контакт не найден')
 
-    def page_note(self):
+    def __str__(self):
         with open(f"{self.second_name + self.first_name}.txt", "r") as file:
             lst_page = file.read().splitlines()
-        print(lst_page)
+        return f'{lst_page}'
+
+
+contact = TelephoneBook()
+print(contact.create_note())
